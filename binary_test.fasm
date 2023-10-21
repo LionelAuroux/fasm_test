@@ -1,0 +1,24 @@
+format binary as "bin"
+
+macro test max
+    display 'HERE ', '0'+max, 0ah
+    a = 10
+    while a < max
+        o = %
+        display 'LOOP ', '0'+o, 0ah
+        db %
+        a = a + 1
+    end while
+end macro
+
+macro treat_list params&
+    display 'coucou'
+    irpv value,params
+        display 'V', '0'+value
+        db value
+    end irpv
+end macro
+
+test 20
+
+treat_list 1, 2, 3, 4, 5, 6
